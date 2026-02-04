@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// ✅ Use environment variable for API URL
+// Development: points to local backend (http://localhost:8000)
+// Production (Docker): uses '/api' which is proxied by Nginx
 const apiClient = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_URL || '/api',
   headers: {
     'Content-Type': 'application/json',
   },
